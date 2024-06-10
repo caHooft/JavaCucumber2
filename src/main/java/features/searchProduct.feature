@@ -5,4 +5,5 @@ Feature: Search and place orders for products
 
     Given user is on Greencart landing page
     When  user searched with shortname "Tom" and finds actual name of the product
-    Then  user searches for "Tom" shortname in office space
+    Then  user searches for "Tom" shortname in offers space
+    And   validate product name in offers page matches with Landing Page
