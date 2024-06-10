@@ -8,15 +8,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.Iterator;
+import java.util.Set;
+
 public class GreenKartStepDefinitions {
     public WebDriver driver;
 
 
-    @Given("user is on greencart landing page")
-    public void user_is_on_greencart_landing_page() {
-        System.setProperty("webdriver.chrome.driver", "C://bin//chrome-win64//chrome.exe/");
+    @Given("user is on Greencart landing page")
+    public void user_is_on_Greencart_landing_page() {
+        System.setProperty("webdriver.chrome.driver", "C:/bin/chrome-win64/chrome.exe");
         driver = new ChromeDriver();
-        driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+        driver.get("https://google.com");
+        //driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
     }
 
     @When("user searched with shortname {string} and finds actual name of the product")
@@ -27,9 +31,21 @@ public class GreenKartStepDefinitions {
         System.out.println(productName + "is extracted from home page");
     }
 
-    @Then("user searches for the same product with the same shortname in office space")
-    public void user_searches_for_the_same_product_with_the_same_shortname_in_office_space() {
+    @Then("user searches for {string} shortname in office space")
+    public void user_searches_for_shortname_in_office_space(String shortname) {
 
+        driver.findElement(By.linkText("Top Deals")).click();
+
+        //Get all windows
+        Set<String> set1 = driver.getWindowHandles();
+        Iterator<String> iterator1 = set1.iterator();
+
+        //Select and switch to child window
+        String childWindow = iterator1.next();
+        driver.switchTo().window(childWindow);
+
+        driver.findElement(By.xpath("//input[@type='search']")).sendKeys(shortname);
+        String offerPageProductName = driver.findElement(By.cssSelector("tr td:nth-child(1)")).getText();
     }
 
 }
