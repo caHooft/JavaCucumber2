@@ -9,6 +9,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 
 import java.util.Iterator;
@@ -22,18 +25,27 @@ public class GreenKartStepDefinitions {
 
     @Given("user is on Greencart landing page")
     public void user_is_on_Greencart_landing_page() {
-        //Cursus example opens testing for Chrome 115 but does not do any steps
-        System.setProperty("webdriver.chrome.driver", "C:/bin/chrome-win64/chrome.exe");
-        driver = new ChromeDriver();
+        //******** This is firefox webdriver from POM
+        //The course is in chrome but since that does not work I am trying to manage with this
+        driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
+        //Cursus example opens testing for Chrome 115 but does not do any steps
+        //System.setProperty("webdriver.chrome.driver", "C:/bin/chrome-win64/chrome.exe");
+        // = new ChromeDriver();
+        //driver.manage().window().maximize();
+        //driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
         //******** old webdriver c:\bin\chromedriver.exe Trying to use the webdriver from POM here but takes static path old webdriver
         //WebDriver driver = new ChromeDriver();
         //driver.manage().window().maximize();
         //driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
+        //******** old webdriver c:\bin\chromedriver.exe Trying to use the webdriver from POM here but takes static path old webdriver
+        //WebDriver driver = new InternetExplorerDriver();
+        //driver.manage().window().maximize();
+        //driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
         //********* Opens testing for Chrome 115 but does not do any steps V2
         //System.setProperty("webdriver.chrome.driver", "C:/bin/chrome-win64/chrome.exe");
