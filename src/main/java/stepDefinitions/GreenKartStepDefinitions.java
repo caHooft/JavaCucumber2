@@ -14,7 +14,7 @@ public class GreenKartStepDefinitions {
 
     @Given("user is on greencart landing page")
     public void user_is_on_greencart_landing_page() {
-        System.setProperty("webdriver.chrome.driver", "C:/bin/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C://bin//chrome-win64//chrome.exe/");
         driver = new ChromeDriver();
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
     }
